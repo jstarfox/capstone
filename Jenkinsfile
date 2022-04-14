@@ -9,8 +9,9 @@ pipeline {
     stage('Create a repo') {
       steps{
         script {
-          sh "chmod +x ./create_repo.sh"
-          sh "./create_repo.sh"
+          //sh "chmod +x ./create_repo.sh"
+          //# sh "./create_repo.sh"
+          sh 'echo repo created'
         }
       }
     }
