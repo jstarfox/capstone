@@ -6,6 +6,14 @@ pipeline {
   }
   agent any
   stages {
+    stage('Create a repo') {
+      steps{
+        script {
+          sh "chmod +x ./create_repo.sh"
+          sh "./create_repo.sh"
+        }
+      }
+    }
     stage('Building image') {
       steps{
         script {
@@ -23,7 +31,6 @@ pipeline {
             }
         }
     }
-    
     stage('Deploy docker image to AWS ECS container') {
             steps {
                 withAWS(credentials: 'IAM_Jordan', region: 'us-east-1') {
